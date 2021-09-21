@@ -2,15 +2,6 @@ import { useContext } from "react";
 import { TransactionsContext } from "../../TransactionsContext";
 import { Container } from "./styles";
 
-// interface ITransaction {
-//   id: number;
-//   title: string;
-//   type: "deposit" | "withdraw";
-//   category: string;
-//   amount: number;
-//   createdAt: string;
-// }
-
 export function TransactionsTable() {
   const { transactions } = useContext(TransactionsContext);
   return (
