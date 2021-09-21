@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { darken, transparentize } from "polished";
 export const Container = styled.form`
   display: flex;
   flex-direction: column;
@@ -33,29 +33,6 @@ export const Container = styled.form`
     }
   }
 
-  section {
-    display: flex;
-    gap: 1rem;
-    label {
-      flex: 1;
-      border: 1.5px solid #969cb2;
-
-      height: 4rem;
-      border-radius: 0.25rem;
-      background-color: #f0f2f5;
-
-      cursor: pointer;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      input {
-        display: none;
-      }
-    }
-  }
-
   button[type="submit"] {
     margin-top: 0.5rem;
     background-color: var(--green);
@@ -72,5 +49,47 @@ export const Container = styled.form`
     &:hover {
       filter: brightness(0.9);
     }
+  }
+`;
+
+export const TransactionTypeContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+interface IRadioBoxProps {
+  isActive: boolean;
+  activeColor: "green" | "red";
+}
+
+const colors = {
+  green: "#33CC95",
+  red: "#E62E4D",
+};
+
+export const RadioBox = styled.button<IRadioBoxProps>`
+  flex: 1;
+  border: 1.5px solid #d7d7d7;
+
+  height: 4rem;
+  border-radius: 0.25rem;
+  background-color: ${({ isActive, activeColor }) =>
+    isActive ? transparentize(0.9, colors[activeColor]) : "transparent"};
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  transition: border-color 200ms;
+
+  img {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+
+  &:hover {
+    border-color: ${darken(0.1, "#d7d7d7")};
   }
 `;
