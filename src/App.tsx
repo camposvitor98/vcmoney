@@ -4,10 +4,7 @@ import { GlobalStyle } from "./styles/globalStyle";
 import { useState } from "react";
 import Modal from "react-modal";
 import { NewTransactionModal } from "./components/NewTransactionModal";
-import {
-  TransactionsContext,
-  TransactionsProvider,
-} from "./TransactionsContext";
+import { TransactionsProvider } from "./hooks/useTransactionsContex/useTransactionsContext";
 
 Modal.setAppElement("#root");
 

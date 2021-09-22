@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { TransactionsContext } from "../../TransactionsContext";
+import { useTransactionsContext } from "../../hooks/useTransactionsContex/useTransactionsContext";
 import { Container } from "./styles";
 
 export function TransactionsTable() {
-  const { transactions } = useContext(TransactionsContext);
+  const { transactions } = useTransactionsContext();
+
   return (
     <Container>
       <table>
@@ -23,7 +23,11 @@ export function TransactionsTable() {
                 {new Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
-                }).format(transaction.amount)}
+                }).format(
+                  transaction.type === "withdraw"
+                    ? transaction.amount * -1
+                    : transaction.amount
+                )}
               </td>
               <td>{transaction.category}</td>
               <td>
